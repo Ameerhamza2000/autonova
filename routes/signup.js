@@ -20,7 +20,7 @@ router.post('/',async(req,res)=>{
     user=await user.save();
 
     const token=user.generateAuthToken();
-    res.status(201).send(token);
+    res.status(201).json({token});
 }
 catch(error){
     res.status(500).send("Error while registering user");
