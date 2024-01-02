@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const jwt=require('jsonwebtoken');
 
 const userSchema=new mongoose.Schema({
-    username:{
+    userName:{
         type:String,
         required:true
     },
@@ -19,7 +19,7 @@ const userSchema=new mongoose.Schema({
 
 userSchema.methods.generateAuthToken=function(){
     try{
-        const token = jwt.sign({_id:this._id,username:this.username},process.env.SECRETKEY);
+        const token = jwt.sign({_id:this._id,userName:this.userName},process.env.SECRETKEY);
     return token;
     }
     catch(error){
