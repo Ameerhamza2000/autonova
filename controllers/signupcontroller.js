@@ -22,7 +22,7 @@ const signupController=async(req,res)=>{
     res.status(201).json({token:token,message:"SignUp Succesfully"});
 }
 catch(error){
-    res.status(500).json({message:"Error while registering user"});
+    res.status(500).json({message:`Error while registering user ${error} `});
 }
 }
 
