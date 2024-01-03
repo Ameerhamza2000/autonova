@@ -3,6 +3,7 @@ const User=require('../models/users');
 
 const signupController=async(req,res)=>{
     try{
+        console.log("signup route hit")
         let user=await User.findOne({email:req.body.email});
     if(user) return res.status(400).json({message:"User Already exist"});
 
@@ -21,7 +22,7 @@ const signupController=async(req,res)=>{
     res.status(201).json({token:token,message:"SignUp Succesfully"});
 }
 catch(error){
-    res.status(500).send("Error while registering user");
+    res.status(500).json({message:"Error while registering user"});
 }
 }
 

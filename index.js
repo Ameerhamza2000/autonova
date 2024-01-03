@@ -10,6 +10,7 @@ const expenseRouter=require('./routes/expenses');
 const userRouter=require('./routes/signup');
 const loginRouter=require('./routes/login');
 const forgotPasswordRouter=require('./routes/forgotpassword')
+const vehicleRouter=require('./routes/vehicle');
 const connectDB = require('./config/connectDB');
 
 // dot env config
@@ -27,6 +28,7 @@ app.use('/register',userRouter);
 app.use('/login',loginRouter);
 app.use('/forgotpassword',forgotPasswordRouter);
 app.use(auth);
+app.use('/car/create',vehicleRouter);
 app.use('/expense',expenseRouter);
 
 // server port

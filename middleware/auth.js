@@ -1,9 +1,14 @@
 const jwt=require('jsonwebtoken');
 
 function auth(req,res,next){
-    const token=req.header('Authorization');
+    // bearer handler
+    const headerToken=req.header('Authorization');
+    const splittedToken=headerToken.split(" ");
+
+    // token
+    const token=splittedToken[1];
     if(!token){
-        return res.status(401).send("Access Denied! no token");
+        return res.status(401).json({message:"Access Denied! no token"});
     }
 
     try{
@@ -12,7 +17,8 @@ function auth(req,res,next){
         next();
     }
     catch(err){
-        res.status(403).send("Invalid Token ");
+        console.log("Access denied! ", err)
+        res.status(403).json({message:"Invalid Token "});
     }
 
 };
